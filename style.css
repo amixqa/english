@@ -1,0 +1,977 @@
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 25px;
+    background: #e9eef0;
+    color: #263b46;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.presentation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.slide {
+    position: relative;
+    width: 100%;
+    max-width: 1120px;
+    aspect-ratio: 297 / 210;
+    min-height: 580px;
+    overflow: hidden;
+    padding: 42px 52px;
+    background: #fff;
+    box-shadow: 0 8px 28px #24374618;
+    page-break-after: always;
+    break-after: page;
+}
+
+/* SECTION HEADINGS */
+
+.section-heading {
+    margin-bottom: 24px;
+}
+
+.eyebrow {
+    margin: 0 0 10px;
+    color: #bd8a59;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.section-heading h2 {
+    margin: 0;
+    color: #203e4b;
+    font-family: Georgia, serif;
+    font-size: clamp(27px, 3vw, 39px);
+    line-height: 1.15;
+}
+
+h1,
+h2,
+h3,
+p {
+    overflow-wrap: anywhere;
+}
+
+h3 {
+    margin: 15px 0 7px;
+    color: #305968;
+    font-size: 19px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* TEXT AND PHOTOS */
+
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.text-content > p:first-child {
+    margin-top: 0;
+}
+
+.text-content p {
+    margin-bottom: 12px;
+}
+
+.side-photo {
+    display: block;
+    width: 100%;
+    height: 390px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.facts {
+    padding-left: 21px;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.facts li {
+    margin-bottom: 5px;
+}
+
+.fact-box {
+    margin-top: 16px;
+    padding: 12px 16px;
+    border-left: 4px solid #bd8a59;
+    background: #f5f3ed;
+}
+
+.fact-box strong {
+    color: #305968;
+}
+
+.fact-box p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.page-number {
+    position: absolute;
+    right: 27px;
+    bottom: 18px;
+    color: #8b9a9e;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+/* ==================================
+   TITLE PAGE
+================================== */
+
+.title-slide {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 42px 45px 24px;
+    text-align: center;
+
+    /* AVIATION BACKGROUND */
+    background-color: #eef4f7;
+    background-image:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.83),
+            rgba(238, 245, 249, 0.78)
+        ),
+        url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1800&q=85");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border: 2px solid #d7c5a0;
+    border-top: 8px solid #244958;
+
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+}
+
+.title-slide::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px solid #e5d8bd;
+    pointer-events: none;
+}
+
+.title-slide::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 90px;
+    height: 5px;
+    transform: translateX(-50%);
+    background: #bd8a59;
+}
+
+.title-slide > * {
+    position: relative;
+    z-index: 1;
+}
+
+.title-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 92px;
+    height: 92px;
+    margin: 8px 0 5px;
+    padding: 7px;
+    background: #fff;
+    border: 1px solid #e5d8bd;
+    border-radius: 50%;
+}
+
+.title-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.institution {
+    margin: 8px 0 14px;
+    color: #244958;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.presentation-label {
+    margin: 12px 0;
+    color: #bd8a59;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.discipline {
+    margin: 10px 0 8px;
+    color: #637b83;
+    font-size: 16px;
+}
+
+.title-slide h1 {
+    margin: 15px 0 8px;
+    color: #244958;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 70px;
+    font-weight: 700;
+    letter-spacing: 9px;
+    line-height: 1.1;
+}
+
+.title-slide .subtitle {
+    margin: 8px 0 12px;
+    color: #7b8585;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    font-style: italic;
+}
+
+.title-number {
+    margin-top: 12px;
+    padding: 8px 32px;
+    color: #244958;
+    background: #f5f0e5;
+    border: 1px solid #bd8a59;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.title-student {
+    width: 340px;
+    max-width: 100%;
+    margin-top: 16px;
+    padding: 12px 18px;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.92);
+    border-left: 3px solid #bd8a59;
+    box-shadow: 0 3px 12px #2437460a;
+}
+
+.title-student p {
+    margin: 6px 0;
+    color: #405761;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.title-student strong {
+    color: #244958;
+}
+
+.title-city {
+    margin-top: auto;
+    margin-bottom: 10px;
+    color: #637b83;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* ==================================
+   COVER AND CONCLUSION
+================================== */
+
+.cover,
+.conclusion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    color: #fff;
+    background: #274854;
+}
+
+.cover-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cover-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(12, 35, 44, 0.84),
+        rgba(12, 35, 44, 0.2)
+    );
+}
+
+.conclusion-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 800px;
+    padding: 45px 60px;
+}
+
+.conclusion-content h2 {
+    margin: 15px 0 24px;
+    font-family: Georgia, serif;
+    font-size: clamp(35px, 5vw, 54px);
+}
+
+.conclusion-content p {
+    max-width: 700px;
+    font-size: 17px;
+    line-height: 1.65;
+}
+
+.conclusion-content h3 {
+    margin-top: 25px;
+    color: #f0d3ac;
+    font-family: Georgia, serif;
+    font-size: 24px;
+}
+
+.conclusion .eyebrow {
+    color: #f0d3ac;
+}
+
+.conclusion .page-number {
+    color: #fff;
+}
+
+/* ==================================
+   CONTENTS
+================================== */
+
+.contents-layout {
+    display: grid;
+    grid-template-columns: 1fr 0.85fr;
+    align-items: center;
+    gap: 30px;
+}
+
+.contents-list p {
+    display: flex;
+    align-items: baseline;
+    gap: 13px;
+    padding-bottom: 7px;
+    margin: 0 0 7px;
+    border-bottom: 1px solid #e4e9e9;
+    font-size: 15px;
+    line-height: 1.35;
+}
+
+.contents-list span {
+    flex-shrink: 0;
+    color: #bd8a59;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.contents-layout img {
+    display: block;
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* ==================================
+   FAMOUS PLACES
+================================== */
+
+.place-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.place-card {
+    overflow: hidden;
+    border: 1px solid #e5e9e9;
+    background: #fff;
+}
+
+.place-card img {
+    display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.place-card div {
+    padding: 8px 14px 14px;
+}
+
+.place-card h3 {
+    margin-top: 8px;
+    font-size: 18px;
+}
+
+.place-card p {
+    margin-bottom: 4px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* ==================================
+   INTERESTING FACTS
+================================== */
+
+.fact-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 22px;
+}
+
+.fact-list article {
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr);
+    gap: 10px;
+    padding: 12px;
+    border-bottom: 1px solid #e2e8e9;
+}
+
+.fact-list article > span {
+    color: #bd8a59;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.fact-list h3 {
+    margin: 0 0 5px;
+    font-size: 17px;
+}
+
+.fact-list p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* ==================================
+   REFERENCES
+================================== */
+
+.reference-intro {
+    margin-bottom: 20px;
+}
+
+.reference-item {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 14px;
+    margin: 13px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e8e9;
+}
+
+.reference-item > span {
+    color: #bd8a59;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.reference-item h3 {
+    margin: 0 0 5px;
+    font-size: 17px;
+}
+
+.reference-item p {
+    margin: 0 0 5px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.reference-item a {
+    color: #326d7c;
+    overflow-wrap: anywhere;
+}
+
+.final-note {
+    margin-top: 20px;
+    color: #52717a;
+    font-family: Georgia, serif;
+    font-style: italic;
+}
+
+/* ==================================
+   MOBILE RESPONSIVE
+================================== */
+
+@media screen and (max-width: 700px) {
+    body {
+        padding: 10px;
+    }
+
+    .presentation {
+        gap: 15px;
+    }
+
+    .slide {
+        aspect-ratio: auto;
+        min-height: 0;
+        padding: 28px 22px 45px;
+    }
+
+    .title-slide {
+        min-height: 650px;
+        padding: 35px 20px 45px;
+        background-position: center;
+    }
+
+    .title-slide::before {
+        inset: 8px;
+    }
+
+    .title-logo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .institution {
+        font-size: 15px;
+    }
+
+    .presentation-label {
+        font-size: 14px;
+        letter-spacing: 3px;
+    }
+
+    .discipline {
+        font-size: 14px;
+    }
+
+    .title-slide h1 {
+        font-size: 48px;
+        letter-spacing: 4px;
+    }
+
+    .title-slide .subtitle {
+        font-size: 16px;
+    }
+
+    .title-student {
+        width: 280px;
+    }
+
+    .two-columns,
+    .contents-layout {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .side-photo {
+        height: 250px;
+    }
+
+    .contents-layout img {
+        height: 230px;
+    }
+
+    .place-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .place-card img {
+        height: 220px;
+    }
+
+    .fact-list {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .section-heading h2 {
+        font-size: 29px;
+    }
+
+    p {
+        font-size: 15px;
+    }
+
+    .conclusion {
+        min-height: 600px;
+    }
+
+    .conclusion-content {
+        padding: 30px 24px;
+    }
+
+    .conclusion-content h2 {
+        font-size: 36px;
+    }
+
+    .page-number {
+        right: 18px;
+        bottom: 12px;
+    }
+}
+
+/* ==================================
+   A4 LANDSCAPE PRINT
+================================== */
+
+@page {
+    size: A4 landscape;
+    margin: 0;
+}
+
+@media print {
+    html,
+    body {
+        width: 297mm;
+        margin: 0;
+        padding: 0;
+        background: #fff;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .presentation {
+        display: block;
+        gap: 0;
+    }
+
+    .slide {
+        width: 297mm;
+        height: 210mm;
+        min-height: 0;
+        max-width: none;
+        aspect-ratio: auto;
+        margin: 0;
+        padding: 11mm 14mm;
+        overflow: hidden;
+        box-shadow: none;
+        break-after: page;
+        page-break-after: always;
+    }
+
+    .slide:last-child {
+        break-after: auto;
+        page-break-after: auto;
+    }
+
+    /* PRINT TITLE PAGE */
+
+    .title-slide {
+        display: flex;
+        position: relative;
+        width: 297mm;
+        height: 210mm;
+        padding: 15mm 15mm 5mm;
+
+        background-color: #eef4f7;
+        background-image:
+            linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.83),
+                rgba(238, 245, 249, 0.78)
+            ),
+            url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1800&q=85");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        border: 0.6mm solid #d7c5a0;
+        border-top: 2mm solid #244958;
+
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .title-slide::before {
+        inset: 3mm;
+        border: 0.3mm solid #e5d8bd;
+    }
+
+    .title-slide::after {
+        width: 24mm;
+        height: 1.3mm;
+    }
+
+    .title-logo {
+        width: 24mm;
+        height: 24mm;
+        margin: 3mm 0 2mm;
+        padding: 1.5mm;
+    }
+
+    .institution {
+        margin: 2mm 0 3mm;
+        font-size: 12pt;
+    }
+
+    .presentation-label {
+        margin: 3mm 0;
+        font-size: 13pt;
+    }
+
+    .discipline {
+        margin: 2mm 0;
+        font-size: 11pt;
+    }
+
+    .title-slide h1 {
+        margin: 4mm 0 2mm;
+        font-size: 46pt;
+        letter-spacing: 6pt;
+    }
+
+    .title-slide .subtitle {
+        margin: 2mm 0 3mm;
+        font-size: 12pt;
+    }
+
+    .title-number {
+        margin-top: 3mm;
+        padding: 2mm 8mm;
+        font-size: 11pt;
+    }
+
+    .title-student {
+        width: 90mm;
+        margin-top: 4mm;
+        padding: 3mm 5mm;
+    }
+
+    .title-student p {
+        margin: 1.5mm 0;
+        font-size: 10pt;
+    }
+
+    .title-city {
+        margin-top: auto;
+        margin-bottom: 3mm;
+        font-size: 10pt;
+    }
+
+    /* COVER AND CONCLUSION */
+
+    .cover,
+    .conclusion {
+        padding: 0;
+    }
+
+    .conclusion-content {
+        padding: 14mm 17mm;
+    }
+
+    .conclusion-content h2 {
+        font-size: 32pt;
+    }
+
+    .conclusion-content p {
+        font-size: 12pt;
+        line-height: 1.45;
+    }
+
+    .conclusion-content h3 {
+        font-size: 18pt;
+    }
+
+    /* GENERAL HEADINGS */
+
+    .section-heading {
+        margin-bottom: 5mm;
+    }
+
+    .section-heading h2 {
+        font-size: 25pt;
+    }
+
+    .eyebrow {
+        margin-bottom: 2mm;
+        font-size: 9pt;
+    }
+
+    /* TEXT AND PHOTO PAGES */
+
+    .two-columns {
+        grid-template-columns: 1fr 0.9fr;
+        gap: 7mm;
+    }
+
+    .text-content p {
+        margin: 0 0 2.5mm;
+        font-size: 10pt;
+        line-height: 1.4;
+    }
+
+    .text-content h3 {
+        margin: 3mm 0 1mm;
+        font-size: 11pt;
+    }
+
+    .facts {
+        font-size: 9pt;
+        line-height: 1.4;
+    }
+
+    .facts li {
+        margin-bottom: 1mm;
+    }
+
+    .side-photo {
+        height: 115mm;
+    }
+
+    .fact-box {
+        margin-top: 3mm;
+        padding: 2.5mm 3mm;
+    }
+
+    .fact-box p {
+        font-size: 9pt;
+        line-height: 1.35;
+    }
+
+    /* CONTENTS */
+
+    .contents-layout {
+        grid-template-columns: 1fr 0.8fr;
+        gap: 7mm;
+    }
+
+    .contents-list p {
+        margin-bottom: 1.5mm;
+        padding-bottom: 1.5mm;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    .contents-layout img {
+        height: 110mm;
+    }
+
+    /* FAMOUS PLACES */
+
+    .place-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 5mm;
+    }
+
+    .place-card img {
+        height: 48mm;
+    }
+
+    .place-card div {
+        padding: 2mm 3mm;
+    }
+
+    .place-card h3 {
+        margin: 1mm 0;
+        font-size: 12pt;
+    }
+
+    .place-card p {
+        font-size: 9pt;
+        line-height: 1.35;
+    }
+
+    /* INTERESTING FACTS */
+
+    .fact-list {
+        grid-template-columns: 1fr 1fr;
+        gap: 3mm 5mm;
+    }
+
+    .fact-list article {
+        padding: 2mm;
+        gap: 2mm;
+    }
+
+    .fact-list article > span {
+        font-size: 15pt;
+    }
+
+    .fact-list h3 {
+        font-size: 11pt;
+    }
+
+    .fact-list p {
+        font-size: 9pt;
+        line-height: 1.35;
+    }
+
+    /* REFERENCES */
+
+    .reference-intro {
+        margin-bottom: 4mm;
+        font-size: 10pt;
+    }
+
+    .reference-item {
+        margin: 3mm 0;
+        padding-bottom: 2mm;
+        gap: 3mm;
+    }
+
+    .reference-item h3 {
+        font-size: 11pt;
+    }
+
+    .reference-item p,
+    .reference-item a {
+        font-size: 9pt;
+        line-height: 1.35;
+    }
+
+    .final-note {
+        margin-top: 4mm;
+        font-size: 10pt;
+    }
+
+    .page-number {
+        right: 9mm;
+        bottom: 6mm;
+        font-size: 8pt;
+    }
+}
+@page {
+    size: A4 landscape;
+    margin: 10mm;
+}
+
+@media print {
+    .slide {
+        width: 277mm;
+        height: 190mm;
+        margin: 0;
+        box-sizing: border-box;
+        page-break-after: always;
+        break-after: page;
+        overflow: hidden;
+    }
+}
+
+
+
+
+
+
+
